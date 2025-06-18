@@ -553,14 +553,14 @@ OPENWRT_FIRMWARE_IMAGE_MAP.update(
                 },
             ),
             (
-                "openwrt-comfast-cfe393ax-squashfs-sysupgrade.bin",
+                "mediatek-filogic-comfast-cfe393ax-squashfs-sysupgrade.bin",
                 {
                     "label": "COMFAST CF-E393-5AX",
                     "boards": ("CF-E393AX","CF-E395AX","comfast,cf-e393ax","COMFAST CF-E393AX"),
                 },
             ),
             (
-                "openwrt-yuncore-ax835-squashfs-sysupgrade.bin",
+                "mediatek-filogic-yuncore-ax835-squashfs-sysupgrade.bin",
                 {
                     "label": "YunCore AX835-KUWIFI",
                     "boards": ("AX835","YunCore AX835","yuncore,ax835"),
