@@ -552,6 +552,20 @@ OPENWRT_FIRMWARE_IMAGE_MAP.update(
                     "boards": ("Geode(TM) Integrated Processor by AMD PCS", "Alix 2D2"),
                 },
             ),
+            (
+                "openwrt-comfast-cfe393ax-squashfs-sysupgrade.bin",
+                {
+                    "label": "COMFAST CF-E393-5AX",
+                    "boards": ("CF-E393AX","CF-E395AX","comfast,cf-e393ax","COMFAST CF-E393AX"),
+                },
+            ),
+            (
+                "openwrt-yuncore-ax835-squashfs-sysupgrade.bin",
+                {
+                    "label": "YunCore AX835-KUWIFI",
+                    "boards": ("AX835","YunCore AX835","yuncore,ax835"),
+                },
+            ),
         )
     )
 )
