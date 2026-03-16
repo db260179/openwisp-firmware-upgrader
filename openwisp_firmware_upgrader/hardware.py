@@ -601,6 +601,37 @@ OPENWRT_FIRMWARE_IMAGE_MAP.update(
                     "boards": ("Geode(TM) Integrated Processor by AMD PCS", "Alix 2D2"),
                 },
             ),
+            (
+                "mediatek-filogic-comfast-cfe393ax-squashfs-sysupgrade.bin",
+                {
+                    "label": "COMFAST CF-E393-AX",
+                    "boards": (
+                        "comfast,cf-e393ax",
+                        "COMFAST CF-E393AX",
+                        "COMFAST CF-E395AX",
+                    ),
+                },
+            ),
+            (
+                "mediatek-filogic-comfast-cfe593ax-squashfs-sysupgrade.bin",
+                {
+                    "label": "COMFAST CF-E593AX",
+                    "boards": (
+                        "comfast,cf-e593ax",
+                        "COMFAST CF-E593AX"
+                    ),
+                },
+            ),
+            (
+                "mediatek-filogic-yuncore-ax835-squashfs-sysupgrade.bin",
+                {
+                    "label": "YunCore AX835",
+                    "boards": (
+                        "yuncore,ax835",
+                        "YunCore AX835",
+                    ),
+                },
+            ),
         )
     )
 )
