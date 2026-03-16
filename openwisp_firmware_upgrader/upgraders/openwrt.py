@@ -87,12 +87,26 @@ class OpenWrt(object):
 
     log_lines = None
 
+    # PATCHED: Updated for OpenWrt 25.12 compatibility with add_provisioning parameter
     _false_positives = [
+        # OpenWrt 25.12+ with add_provisioning parameter (with backup)
+        "Command failed: ubus call system sysupgrade "
+        '\{ "prefix": "\\\/tmp\\\/root", "path": "[^"]*", '
+        '"backup": "\\\/tmp\\\/sysupgrade.tgz", '
+        '"command": "\\\/lib\\\/upgrade\\\/do_stage2", '
+        '"options": \{ "save_partitions": 1, "add_provisioning": [0-1] \} \}',
+        # OpenWrt 25.12+ with add_provisioning parameter (without backup)
+        "Command failed: ubus call system sysupgrade "
+        '\{ "prefix": "\\\/tmp\\\/root", "path": "[^"]*", '
+        '"command": "\\\/lib\\\/upgrade\\\/do_stage2", '
+        '"options": \{ "save_partitions": 1, "add_provisioning": [0-1] \} \}',
+        # Legacy OpenWrt versions without add_provisioning (with backup)
         "Command failed: ubus call system sysupgrade "
         '\{ "prefix": "\\\/tmp\\\/root", "path": "[^"]*", '
         '"backup": "\\\/tmp\\\/sysupgrade.tgz", '
         '"command": "\\\/lib\\\/upgrade\\\/do_stage2", '
         '"options": \{ "save_partitions": 1 \} \}',
+        # Legacy OpenWrt versions without add_provisioning (without backup)
         "Command failed: ubus call system sysupgrade "
         '\{ "prefix": "\\\/tmp\\\/root", "path": "[^"]*", '
         '"command": "\\\/lib\\\/upgrade\\\/do_stage2", '
@@ -469,10 +483,17 @@ class OpenWrt(object):
             # returns a non zero exit code, but it is carried out anyway.
             # This is a workaround to recognize this false positive and ignore it.
             error = str(e)
+            matched = False
             for pattern in cls._false_positives:
                 if re.search(pattern, error):
+                    # PATCHED: Add informative logging when false positive detected
+                    upgrader.log(
+                        "Connection closed during sysupgrade (expected behavior - "
+                        "device is rebooting)"
+                    )
+                    matched = True
                     break
-            else:
+            if not matched:
                 failure_queue.put(e)
         upgrader.disconnect()
 
