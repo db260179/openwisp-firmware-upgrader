@@ -609,6 +609,13 @@ OPENWRT_FIRMWARE_IMAGE_MAP.update(
                 },
             ),
             (
+                "mediatek-filogic-openwrt-comfast-cfe593ax-squashfs-sysupgrade.bin",
+                {
+                    "label": "COMFAST CF-E593-AX",
+                    "boards": ("CF-E593AX","comfast,cf-e593ax","COMFAST CF-E593AX"),
+                },
+            ),
+            (
                 "mediatek-filogic-yuncore-ax835-squashfs-sysupgrade.bin",
                 {
                     "label": "YunCore AX835-KUWIFI",
